@@ -1,0 +1,104 @@
+# Advent of Code - Day 2
+
+```elixir
+Mix.install([
+  {:req, "~> 0.5.8"}
+])
+```
+
+## Input
+
+```elixir
+opts = [headers: [{"cookie", "session=#{System.fetch_env!("AOC_SESSION_COOKIE")}"}]]
+input = Req.get!("https://adventofcode.com/2024/day/2/input", opts).body
+```
+
+## Part 1
+
+```elixir
+defmodule Aoc2024.Day2 do
+
+  # opts = [headers: [{"cookie", "session=#{System.fetch_env!("AOC_SESSION_COOKIE")}"}]]
+  # input = Req.get!("https://adventofcode.com/2024/day/2/input", opts).body
+
+  def part_1(input) do
+    input 
+      |> String.split("\n", trim: true)
+      |> Enum.map(&convert_to_int_list/1)
+      |> Enum.map(&check_report/1)
+      |> Enum.count(fn s -> elem(s, 0) == :safe end)     
+  end
+
+  def part_2(input) do
+    input 
+      |> String.split("\n", trim: true)
+      |> Enum.map(&convert_to_int_list/1)
+      |> Enum.map(&is_safe_combinations?/1)
+      |> Enum.count(fn s -> s == true end)
+  end
+
+  defp convert_to_int_list(readings) do
+    readings
+    |> String.split()
+    |> Enum.map(&String.to_integer/1)    
+  end
+
+  defp is_safe_combinations?(reading) do
+    [reading | (for idx <- (0..length(reading) - 1), do: List.delete_at(reading, idx))]
+    |> Enum.map(&check_report/1)
+    |> Enum.any?(fn s -> elem(s, 0) == :safe end)
+  end
+
+  defp check_report(reading) do
+    reading
+    |> Enum.reduce({:unknown}, fn x, acc -> 
+      case acc do
+        {:unsafe} -> 
+          {:unsafe}
+        {:unknown} -> 
+          {:safe, :unknown, x}
+        {:safe, :unknown, prev} when prev < x and abs(prev - x) < 4  ->
+          {:safe, :increasing, x}
+        {:safe, :unknown, prev} when prev > x and abs(prev - x) < 4 ->
+          {:safe, :decreasing, x}
+        {:safe, :increasing, prev} when prev < x and abs(prev - x) < 4 ->
+          {:safe, :increasing, x}
+        {:safe, :decreasing, prev} when prev > x and abs(prev - x) < 4 ->
+          {:safe, :decreasing, x}
+        _ ->
+          {:unsafe}            
+      end    
+      end)
+  end
+  
+end
+
+
+```
+
+```elixir
+#test = 
+#  "7 6 4 2 1"
+#  |> String.split("\n", trim: true)
+#  |> Enum.map(&Aoc2024.Day2.convert_to_int_list/1)
+
+#[reading | _] = test
+
+#for idx <- (0..length(reading) - 1), do: List.delete_at(reading, idx)
+
+#reading = [14, 17, 20, 21, 24, 26, 27, 24]
+#combos = [reading | (for idx <- (0..length(reading) - 1), do: List.delete_at(reading, idx))]
+#IO.inspect(combos)
+
+
+
+
+#Aoc2024.Day2.part_1(input)
+
+#reading = [14, 17, 20, 21, 24, 26, 27, 24]
+#Aoc2024.Day2.is_safe_combinations?(reading)
+
+Aoc2024.Day2.part_2(input)
+
+#
+```
