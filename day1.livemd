@@ -11,7 +11,7 @@ Mix.install([
 ## Part 1
 
 ```elixir
-input = File.stream!("<your path here>/2024-aoc-day1-part1.txt", :line)
+input = File.stream!("D:/work/sensemaking/elixir/livebook/files/2024-aoc-day1-part1.txt", :line)
 |> Enum.map(&String.trim/1)
 |> Enum.map(&String.split/1)
 |> Enum.map(fn [a, b] -> [String.to_integer(a), String.to_integer(b)] end)
@@ -60,8 +60,8 @@ Your actual left and right lists contain many location IDs. What is the total di
 input
 |> Enum.map(&Enum.sort/1)
 |> Enum.zip()
-|> Enum.map(fn {a, b} -> abs(a - b) end)
-|> Enum.sum()
+|> Enum.reduce(0, fn {a, b}, acc -> acc + abs(a - b) end)
+#|> Enum.sum()
 ```
 
 ## Part 2
@@ -99,6 +99,16 @@ Once again consider your left and right lists. What is their similarity score?
 [_, right] = input
 
 left
-|> Enum.map(fn x -> x * Enum.count(right, fn y -> x==y end) end)
-|> Enum.sum()
+|> Enum.reduce(0, fn x, acc  -> acc + (x * Enum.count(right, fn y -> x==y end)) end)
+#|> Enum.sum()
 ```
+
+notes to improve,
+
+any way to use reduce rather than a map/sum? yes - 2 instances done
+
+Enum.count step - there's a frequencies function - use that?
+
+Can the two initial lists be parsed out any easier? Unzip maybe?
+I feel certain this step of the initial pipeline could be better...
+|> Enum.reduce([[],[]], fn [a, b], acc -> [left, right] = acc; [left ++ [a], right ++ [b]] end)
