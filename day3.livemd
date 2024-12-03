@@ -1,0 +1,309 @@
+
+Advent of Code - Day 3
+Using 🏠 Personal
+workspace
+Notebook dependencies and setup
+Evaluated
+  1
+  2
+  3
+Mix.install([
+  {:req, "~> 0.5.8"}
+])
+Evaluated
+:ok
+Part 1
+
+"Our computers are having issues, so I have no idea if we have any Chief Historians in stock! You're welcome to check the warehouse, though," says the mildly flustered shopkeeper at the North Pole Toboggan Rental Shop. The Historians head out to take a look.
+
+The shopkeeper turns to you. "Any chance you can see why our computers are having issues again?"
+
+The computer appears to be trying to run a program, but its memory (your puzzle input) is corrupted. All of the instructions have been jumbled up!
+
+It seems like the goal of the program is just to multiply some numbers. It does that with instructions like mul(X,Y), where X and Y are each 1-3 digit numbers. For instance, mul(44,46) multiplies 44 by 46 to get a result of 2024. Similarly, mul(123,4) would multiply 123 by 4.
+
+However, because the program's memory has been corrupted, there are also many invalid characters that should be ignored, even if they look like part of a mul instruction. Sequences like mul(4*, mul(6,9!, ?(12,34), or mul ( 2 , 4 ) do nothing.
+
+For example, consider the following section of corrupted memory:
+
+xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5)) Only the four highlighted sections are real mul instructions. Adding up the result of each instruction produces 161 (24 + 55 + 118 + 85).
+
+Scan the corrupted memory for uncorrupted mul instructions. What do you get if you add up all of the results of the multiplications?
+  1
+  2
+opts = [headers: [{"cookie", "session=#{System.fetch_env!("AOC_SESSION_COOKIE")}"}]]
+input = Req.get!("https://adventofcode.com/2024/day/3/input", opts).body
+Evaluated
+"select(){,(where()+-mul(514,727);:]]what():^*from(764,547) mul(550,305)$^^%>select(587,376)mul(94,564)select()when(633,175)<where()mul(260,379)mul(790,810)&!$%mul(557,683) why(){/mul(220,10)!+{+mul(654,746){who()what() !%mul(89,191)who()select()*#&>[[mul(302,490)$-}&**+mul(335,535)@select()>select()mul(241,166)when(800,629)mul(758,530)',^ &!~%/#mul(938,70)?&!from();mul(412,287)}/mul(230,620)(~select()what()select()'@mul(410,577)$mul(720,516)-mul(373,78)when()!^:@{)mul(793,973)who()when()mul(85,246)>what()}[#[@!^/mul(396,22)@when()-;:':>}mul(515,670)<[mul(38,415)?~<?mul(200,147):mul(328,235)*<what() (] ::what()mul(571,33)mul(679,122)>select()why()^when()*#+($do()']select()>:^/when()^mul(440,923)<what():mul(971,274)(mul(833,181))don't()why();{#mul(468,401)$+?mul(446,956)where()mul(391,995)who(813,746),^who()%how()^when()mul(284,629);[why()mul(922,806)%}mul(183,352)where() [{,why(475,275)mul(547,62)$mul(753,602)*!%where()-mul(956,732)$;what()<;'{:*mul(481,556)from()*{select():what()'#mul(905,420)what()mul(327,771), who()}mul(45,757)mul(366,653)where(459,755))don't();when()mul(807,855)where()$)>@mul(48,816)mul(370,665)@*>who()^,when()mul(155,426) mul(132,914)^%select()&when()/from()(+}mul(296,176)mul(361,479)%{;!,'who()where():mul(506,495)#who()&%< ^mul(481,87))&!;mul(541,563)%don't(){}'-),from()$mul(495,427)^when()mul(640,499)select()}:] )%+()mul(967,918)?when()select()<{/who()what()mul(505,225)(mul(90,482)>!from()when()#do()mul(620,841):who()!mul(719,850)where()-)mul(931,185)?;select()]@,why()%]mul(39,103)mul(687,103)$%];how(337,314)[}$-when()mul(282,494):;!where(188,779);who()mul(342,554)<^who()(why()where()who(345,491)%mul(407,74)why()&}'%'mul(324,781)mul(90,925):from()mul(828,16)mul(438,549){what()>$why()*what(35,607)mulwho()mul(91,548)>,what()select()]&how()@mul(384,93!select(),where()$mul(835,662)@{don't():#<^/-+mul(489,462)>>where(){why()where()---when()mul(53,461)/~?mul(273,777)mul(119,879)+@'when()-mul(585,949)?['when()from(946,632)mul(22,105)>-:how())from();mul(439,876)?mulwho()@who()when()<@{-mul(111,687)$&mul(432,628)%*,{when()mul(287,508)'-select()}don't()/#~-@from()[:#mul(111,655)%: &;mul(518,391)don't()<from()%-~-!@mul(301,138)(,how()mul(654,521)!*when()--({who()how()don't() ~where()!~mul(910,877)?+select()+-[#&do()*< +-what()&how()%$mul(123,641)*?&mul(488,741)<}@@&?what()how()what())mul(301,649);why()%mul(259,148)$~')&[{mul(83,94)~select()~^when()mul(232,572)mul(889,281)why()%*#$}<[mul(256,607)}({mul(382,953)what()how()why() who()from()!?%mul(433,147)+>&mul(197,749)@who()*mul(935,21)+> who()why()mul(299,881)who()]@+%/from()[?do();{+[why()$select()#mul(264,731)]'select()what();+who()mul(713,161)where(931,649))mul(360,529)}where()!;]how()<mul;$-:]]how()#where()select()when()mul(971,836)when():[how(){mul(567,429)!}{{',mul(522,696),why(){mul(833;#-&#,select()~mul(80,121)+*,#how()select()${>how()mul(619,728)how()<%}+}mul(420,324);{!from();mul;)>mul(144,181)who()}?~where():who()${ mul(261,691),why() /+mul(189,450)\n+when()%^]]/when()~@mul(533,22)mul(231,586)mul(107,724)!@mul(504who()@}when(291,528)mul(691,859)/}#mul(726,544)from()[>>what()^<mul(316,707)@&why(),what()mul(798,459) why()~)]mul(612,148)[??when()]*~mul(634,978)mul(477,947)<?(&!;what(724,289)@~^do()who()mul(828,259)mul(595,267)who(671,135)}why()&how()mul(351,552)when()how()^>?^from(762,977)mul(67,280)(who()^mul(586,844)}how()<from()mul(521,525)'select()mul(379,96), mul(478,481)where(465,218)mul-&*: ~mul(123,281)when()mul(249,626) <}mul(190,620)mul(21,142):from(278,629)}how(997,873)when()'from()#mul(117,186)^:]when(128,617)mul(940,708);mul(960,867);[,~when()when() mul(135,71)where(972,23)mul(79,533)how()* )%<&do()@>how()+where(),mul(886,320)#from(691,802)mul(376,296)'why()[@}how()#why(530,714)?>mul(791,363)?what()$${@why()>+mul(133,626))why()&}what(){%(mul(474,459)what()where()(^mul(311,372)mul(243,118)where()@mul(302,760):{who()-'{+mul(145,293)}why();how());$]mul(652,761%? ;]:@mul(259,51)@<mul(369,322 +#!mul(99,991):from()/}mul(137,230)why()}^%^{}select()where()mul(226,287)mul(590,394)[>>'mul(474,995){don't():}*mul(309,511)?select();(mul(553,164)]how(){w" <> ...
+Selection deleted
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+defmodule Aoc2024.Day3 do
+  def part_1(input) do
+    ~r/mul\((\d{1,3}),(\d{1,3})\)/
+      |> Regex.scan(input, capture: :all_but_first)
+      |> Enum.reduce(0, fn [a, b], acc -> acc + (String.to_integer(a) * String.to_integer(b)) end)
+  end
+
+  def part_2(input) do
+    ~r/mul\((\d{1,3}),(\d{1,3})\)|don't\(\)|do\(\)/
+    |> Regex.scan(input)
+    |> Enum.reduce({:enabled, 0}, fn row, acc ->
+      case process(row) do
+        :enabled ->
+          {:enabled, elem(acc, 1)}
+        :disabled -> 
+          {:disabled, elem(acc, 1)}
+        x ->
+          case elem(acc, 0) do
+            :disabled ->
+              {:disabled, elem(acc, 1)}
+            :enabled ->
+              {:enabled, x + elem(acc, 1)}
+          end
+      end
+    end)    
+  end
+
+  def process(row) when is_list(row) and length(row) == 1 do
+    case row do
+      ["don't()"] ->
+        :disabled
+      ["do()"] ->
+        :enabled
+    end
+  end
+
+  def process(row) when is_list(row) and length(row) == 3 do
+    [_, a, b] = row
+    String.to_integer(a) * String.to_integer(b)
+  end  
+end
+Evaluated *
+{:module, Aoc2024.Day3, <<70, 79, 82, 49, 0, 0, 15, ...>>, {:process, 1}}
+  1
+Aoc2024.Day3.part_1(input)
+Evaluated
+161085926
+  1
+  2
+  3
+  4
+  5
+test = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
+
+~r/mul\((\d{1,3}),(\d{1,3})\)/
+|> Regex.scan(test, capture: :all_but_first)
+|> Enum.reduce(0, fn [a, b], acc -> acc + (String.to_integer(a) * String.to_integer(b)) end)
+Evaluated *
+161
+Part 2
+
+As you scan through the corrupted memory, you notice that some of the conditional statements are also still intact. If you handle some of the uncorrupted conditional statements in the program, you might be able to get an even more accurate result.
+
+There are two new instructions you'll need to handle:
+
+The do() instruction enables future mul instructions. The don't() instruction disables future mul instructions. Only the most recent do() or don't() instruction applies. At the beginning of the program, mul instructions are enabled.
+
+For example:
+
+xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5)) This corrupted memory is similar to the example from before, but this time the mul(5,5) and mul(11,8) instructions are disabled because there is a don't() instruction before them. The other mul instructions function normally, including the one at the end that gets re-enabled by a do() instruction.
+
+This time, the sum of the results is 48 (24 + 85).
+
+Handle the new instructions; what do you get if you add up all of the results of just the enabled multiplications?
+  1
+Aoc2024.Day3.part_2(input)
+Evaluated
+{:enabled, 82045421}
+Selection deleted
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+test = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+
+~r/mul\((\d{1,3}),(\d{1,3})\)|don't\(\)|do\(\)/
+|> Regex.scan(test)
+
+#Aoc2024.Day3.process(["don't()"])
+#Aoc2024.Day3.process(["do()"])
+Aoc2024.Day3.part_2(test)
+
+Evaluated
+{:enabled, 48}
+Export
+
+Here you can preview and directly export the notebook source.
+Live Markdown
+IEx session
+Include outputs
+advent_of_code_day_3.livemd
+
+# Advent of Code - Day 3
+
+```elixir
+Mix.install([
+  {:req, "~> 0.5.8"}
+])
+```
+
+## Part 1
+
+"Our computers are having issues, so I have no idea if we have any Chief Historians in stock! You're welcome to check the warehouse, though," says the mildly flustered shopkeeper at the North Pole Toboggan Rental Shop. The Historians head out to take a look.
+
+The shopkeeper turns to you. "Any chance you can see why our computers are having issues again?"
+
+The computer appears to be trying to run a program, but its memory (your puzzle input) is corrupted. All of the instructions have been jumbled up!
+
+It seems like the goal of the program is just to multiply some numbers. It does that with instructions like mul(X,Y), where X and Y are each 1-3 digit numbers. For instance, mul(44,46) multiplies 44 by 46 to get a result of 2024. Similarly, mul(123,4) would multiply 123 by 4.
+
+However, because the program's memory has been corrupted, there are also many invalid characters that should be ignored, even if they look like part of a mul instruction. Sequences like mul(4*, mul(6,9!, ?(12,34), or mul ( 2 , 4 ) do nothing.
+
+For example, consider the following section of corrupted memory:
+
+xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))
+Only the four highlighted sections are real mul instructions. Adding up the result of each instruction produces 161 (2*4 + 5*5 + 11*8 + 8*5).
+
+Scan the corrupted memory for uncorrupted mul instructions. What do you get if you add up all of the results of the multiplications?
+
+```elixir
+opts = [headers: [{"cookie", "session=#{System.fetch_env!("AOC_SESSION_COOKIE")}"}]]
+input = Req.get!("https://adventofcode.com/2024/day/3/input", opts).body
+```
+
+```elixir
+defmodule Aoc2024.Day3 do
+  def part_1(input) do
+    ~r/mul\((\d{1,3}),(\d{1,3})\)/
+      |> Regex.scan(input, capture: :all_but_first)
+      |> Enum.reduce(0, fn [a, b], acc -> acc + (String.to_integer(a) * String.to_integer(b)) end)
+  end
+
+  def part_2(input) do
+    ~r/mul\((\d{1,3}),(\d{1,3})\)|don't\(\)|do\(\)/
+    |> Regex.scan(input)
+    |> Enum.reduce({:enabled, 0}, fn row, acc ->
+      case process(row) do
+        :enabled ->
+          {:enabled, elem(acc, 1)}
+        :disabled -> 
+          {:disabled, elem(acc, 1)}
+        x ->
+          case elem(acc, 0) do
+            :disabled ->
+              {:disabled, elem(acc, 1)}
+            :enabled ->
+              {:enabled, x + elem(acc, 1)}
+          end
+      end
+    end)    
+  end
+
+  def process(row) when is_list(row) and length(row) == 1 do
+    case row do
+      ["don't()"] ->
+        :disabled
+      ["do()"] ->
+        :enabled
+    end
+  end
+
+  def process(row) when is_list(row) and length(row) == 3 do
+    [_, a, b] = row
+    String.to_integer(a) * String.to_integer(b)
+  end  
+end
+```
+
+```elixir
+Aoc2024.Day3.part_1(input)
+```
+
+```elixir
+test = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"
+
+~r/mul\((\d{1,3}),(\d{1,3})\)/
+|> Regex.scan(test, capture: :all_but_first)
+|> Enum.reduce(0, fn [a, b], acc -> acc + (String.to_integer(a) * String.to_integer(b)) end)
+```
+
+## Part 2
+
+As you scan through the corrupted memory, you notice that some of the conditional statements are also still intact. If you handle some of the uncorrupted conditional statements in the program, you might be able to get an even more accurate result.
+
+There are two new instructions you'll need to handle:
+
+The do() instruction enables future mul instructions.
+The don't() instruction disables future mul instructions.
+Only the most recent do() or don't() instruction applies. At the beginning of the program, mul instructions are enabled.
+
+For example:
+
+xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))
+This corrupted memory is similar to the example from before, but this time the mul(5,5) and mul(11,8) instructions are disabled because there is a don't() instruction before them. The other mul instructions function normally, including the one at the end that gets re-enabled by a do() instruction.
+
+This time, the sum of the results is 48 (2*4 + 8*5).
+
+Handle the new instructions; what do you get if you add up all of the results of just the enabled multiplications?
+
+```elixir
+Aoc2024.Day3.part_2(input)
+```
+
+```elixir
+test = "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
+
+~r/mul\((\d{1,3}),(\d{1,3})\)|don't\(\)|do\(\)/
+|> Regex.scan(test)
+
+#Aoc2024.Day3.process(["don't()"])
+#Aoc2024.Day3.process(["do()"])
+Aoc2024.Day3.part_2(test)
+
+```
+
