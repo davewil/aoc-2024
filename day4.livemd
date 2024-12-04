@@ -1,0 +1,60 @@
+# Untitled notebook
+
+## Section
+
+```elixir
+defmodule Aoc2024.Day4 do
+  def find_word_count(grid, word) do
+    for row <- (0..length(grid) - 1) do
+      for col <- (0..length(Enum.at(grid, 0)) - 1) do
+        IO.inspect("checking #{word} at #{row}, #{col}")
+      end
+    end
+  end
+
+  def search_at(grid, word, row, col) do
+    # row_delta, col_delta
+    directions = [
+      {0, 1}, # search right
+      {0, -1}, # search left
+      {1, 0}, # search down
+      {-1, 0}, # search up
+      {1, 1}, #diag down right
+      {-1, 1}, #diag down left
+      {-1, 1}, #diag up right
+      {-1, -1}, #diag up left
+    
+    ]
+  end
+end 
+```
+
+```elixir
+input = "MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX"
+
+grid = input
+|> String.split("\r\n", trim: true)
+|> Stream.map(&String.graphemes()/1)
+|> Enum.to_list()
+
+
+row_count = length(grid)
+col_count = length(Enum.at(grid, 0))
+search_word = "XMAS"
+
+Aoc2024.Day4.find_word_count(grid, search_word)
+
+
+
+
+
+```
